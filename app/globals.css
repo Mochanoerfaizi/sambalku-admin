@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+:root {
+  --red: #b91c1c;
+  --red-dark: #7f1d1d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f8fafc;
+  color: #172033;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* Card */
+.card {
+  @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
+}
+
+/* Input */
+.input {
+  @apply w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-100;
+}
+
+/* Base button */
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2.5 font-semibold transition;
+}
+
+/* Primary button */
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-4 py-2.5 font-semibold text-white transition hover:bg-red-700;
+}
+
+/* Secondary button */
+.btn-secondary {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 font-semibold text-slate-700 transition hover:bg-slate-50;
+}
