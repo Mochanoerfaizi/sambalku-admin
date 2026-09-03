@@ -2,6 +2,7 @@
 
 import { db } from "@/lib/db";
 import { redirect } from "next/navigation";
+import { randomUUID } from "node:crypto";
 
 export async function createSale(formData: FormData) {
   const productId = Number(formData.get("productId"));
@@ -14,11 +15,19 @@ export async function createSale(formData: FormData) {
   if (!product || quantity <= 0 || product.stock < quantity) throw new Error("Stok tidak cukup.");
 
   const total = quantity * Number(product.sellPrice);
+  const isQris = paymentMethod === "QRIS";
 
   await db.$transaction(async tx => {
     await tx.sale.create({
       data: {
-        channel, paymentMethod, description, totalAmount: total, createdById: 1,
+        channel,
+        paymentMethod,
+        paymentStatus: isQris ? "PENDING" : "PAID",
+        paymentReference: isQris ? `QRIS-${randomUUID()}` : undefined,
+        paidAt: isQris ? undefined : new Date(),
+        description,
+        totalAmount: total,
+        createdById: 1,
         items: { create: { productId, quantity, unitPrice: product.sellPrice, totalPrice: total } }
       }
     });

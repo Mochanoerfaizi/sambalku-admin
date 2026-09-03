@@ -13,6 +13,7 @@ body {
   margin: 0;
   background: #f8fafc;
   color: #172033;
+  overflow-x: hidden;
 }
 
 button,
@@ -27,6 +28,37 @@ textarea {
   @apply rounded-2xl border border-slate-200 bg-white shadow-sm;
 }
 
+.page-header {
+  @apply mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between;
+}
+
+.page-title {
+  @apply text-2xl font-extrabold tracking-tight sm:text-3xl;
+}
+
+.table-scroll {
+  @apply overflow-x-auto;
+}
+
+.table-scroll table {
+  min-width: 640px;
+}
+
+.table-scroll th,
+.table-scroll td {
+  @apply whitespace-nowrap;
+}
+
+.table-scroll th:first-child,
+.table-scroll td:first-child {
+  @apply pl-4 sm:pl-5;
+}
+
+.table-scroll th:last-child,
+.table-scroll td:last-child {
+  @apply pr-4 sm:pr-5;
+}
+
 /* Input */
 .input {
   @apply w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-100;
@@ -39,7 +71,7 @@ textarea {
 
 /* Primary button */
 .btn-primary {
-  @apply inline-flex items-center justify-center gap-2 rounded-xl bg-red-600 px-4 py-2.5 font-semibold text-white transition hover:bg-red-700;
+  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-red-600 px-4 py-2.5 text-center font-semibold text-white transition hover:bg-red-700;
 }
 
 /* Secondary button */

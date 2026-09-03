@@ -18,13 +18,13 @@ export default async function Dashboard() {
 
   return (
     <div className="mx-auto max-w-7xl">
-      <header className="mb-7 flex flex-col justify-between gap-3 md:flex-row md:items-center">
+      <header className="page-header">
         <div>
           <p className="text-sm font-medium text-red-600">Sistem Admin</p>
-          <h1 className="text-3xl font-extrabold">Dashboard</h1>
+          <h1 className="page-title">Dashboard</h1>
           <p className="mt-1 text-sm text-slate-500">Pantau modal, penjualan, pengeluaran, dan saldo usaha.</p>
         </div>
-        <div className="rounded-xl border bg-white px-4 py-2 text-sm">{dateID(new Date())}</div>
+        <div className="w-fit rounded-xl border bg-white px-4 py-2 text-sm">{dateID(new Date())}</div>
       </header>
 
       <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -39,7 +39,7 @@ export default async function Dashboard() {
           <h2 className="font-bold">Ringkasan Keuangan</h2>
           <div className="mt-5 grid h-56 place-items-center rounded-xl bg-gradient-to-br from-red-50 via-white to-orange-50 text-center">
             <div>
-              <div className="text-5xl font-black text-red-700">{rupiah(balance)}</div>
+              <div className="text-3xl font-black text-red-700 sm:text-5xl">{rupiah(balance)}</div>
               <div className="mt-2 text-sm text-slate-500">Saldo bersih berdasarkan seluruh transaksi</div>
             </div>
           </div>
@@ -63,7 +63,7 @@ export default async function Dashboard() {
         <div className="border-b p-5">
           <h2 className="font-bold">Penjualan Terbaru</h2>
         </div>
-        <div className="overflow-x-auto">
+        <div className="table-scroll">
           <table className="w-full text-left text-sm">
             <thead className="bg-slate-50 text-slate-500">
               <tr><th className="px-5 py-3">Tanggal</th><th>Channel</th><th>Item</th><th className="px-5 text-right">Total</th></tr>

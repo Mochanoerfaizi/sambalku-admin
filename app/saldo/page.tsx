@@ -24,8 +24,8 @@ export default async function SaldoPage() {
 
   return (
     <div className="mx-auto max-w-7xl">
-      <div className="mb-6"><h1 className="text-3xl font-extrabold">Saldo Harian</h1><p className="text-sm text-slate-500">Saldo = Pendapatan − Modal/Belanja − Pengeluaran lain.</p></div>
-      <div className="card overflow-hidden"><table className="w-full text-left text-sm"><thead className="bg-slate-50"><tr><th className="p-4">Tanggal</th><th>Modal</th><th>Pendapatan</th><th>Pengeluaran</th><th className="p-4 text-right">Saldo</th></tr></thead><tbody>{computed.map(r=><tr key={r.date} className="border-t"><td className="p-4">{dateID(r.date)}</td><td>{rupiah(r.purchases)}</td><td className="text-emerald-700">{rupiah(r.sales)}</td><td className="text-orange-700">{rupiah(r.expenses)}</td><td className="p-4 text-right font-black">{rupiah(r.balance)}</td></tr>)}{computed.length===0&&<tr><td colSpan={5} className="p-8 text-center text-slate-500">Belum ada transaksi.</td></tr>}</tbody></table></div>
+      <div className="mb-6"><h1 className="page-title">Saldo Harian</h1><p className="text-sm text-slate-500">Saldo = Pendapatan − Modal/Belanja − Pengeluaran lain.</p></div>
+      <div className="card overflow-hidden"><div className="table-scroll"><table className="w-full text-left text-sm"><thead className="bg-slate-50"><tr><th className="p-4">Tanggal</th><th>Modal</th><th>Pendapatan</th><th>Pengeluaran</th><th className="p-4 text-right">Saldo</th></tr></thead><tbody>{computed.map(r=><tr key={r.date} className="border-t"><td className="p-4">{dateID(r.date)}</td><td>{rupiah(r.purchases)}</td><td className="text-emerald-700">{rupiah(r.sales)}</td><td className="text-orange-700">{rupiah(r.expenses)}</td><td className="p-4 text-right font-black">{rupiah(r.balance)}</td></tr>)}{computed.length===0&&<tr><td colSpan={5} className="p-8 text-center text-slate-500">Belum ada transaksi.</td></tr>}</tbody></table></div></div>
     </div>
   );
 }

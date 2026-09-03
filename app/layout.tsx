@@ -13,7 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <div className="min-h-screen md:flex">
           <Sidebar />
-          <main className="min-w-0 flex-1 p-4 md:p-8">{children}</main>
+          <main className="min-w-0 flex-1 px-3 py-5 sm:px-5 lg:p-8">{children}</main>
         </div>
       </body>
     </html>

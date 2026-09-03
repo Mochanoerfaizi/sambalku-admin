@@ -19,6 +19,13 @@ enum PaymentMethod {
   MARKETPLACE
 }
 
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  EXPIRED
+}
+
 model User {
   id          Int          @id @default(autoincrement())
   name        String
@@ -64,6 +71,9 @@ model Sale {
   date            DateTime       @default(now())
   channel         String         @default("OFFLINE")
   paymentMethod   PaymentMethod  @default(CASH)
+  paymentStatus   PaymentStatus  @default(PAID)
+  paymentReference String?       @unique
+  paidAt          DateTime?
   description     String?
   totalAmount     Decimal        @db.Decimal(14, 2)
   createdById     Int
@@ -73,6 +83,18 @@ model Sale {
   updatedAt       DateTime       @updatedAt
 
   @@index([date])
+  @@index([paymentStatus])
+}
+
+model PaymentEvent {
+  id              Int      @id @default(autoincrement())
+  providerEventId String   @unique
+  paymentReference String
+  status          String
+  payload         Json
+  createdAt       DateTime @default(now())
+
+  @@index([paymentReference])
 }
 
 model SaleItem {
